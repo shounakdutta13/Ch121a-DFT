@@ -1,6 +1,6 @@
 import json, os
 
-NOTEBOOKS_DIR = "/home/runner/work/Ch121a-DFT/Ch121a-DFT/notebooks"
+NOTEBOOKS_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def nb(cells):
     return {
