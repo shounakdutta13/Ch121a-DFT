@@ -17,8 +17,8 @@ chapters:
   title: "06 — Molecular Properties"
 - file: notebooks/07_reaction_energetics
   title: "07 — Reaction Energetics"
-- file: notebooks/08_transition_metal_complexes
-  title: "08 — Transition Metal Complexes"
+- file: notebooks/08_test_cases
+  title: "08 — Test Cases"
 - file: notebooks/09_nbo_population_analysis
   title: "09 — Population Analysis & Bonding"
 - file: notebooks/10_excited_states_tddft
