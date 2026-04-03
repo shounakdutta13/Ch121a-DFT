@@ -1,13 +1,15 @@
-import json, os
+import json, os, sys
 
 NOTEBOOKS_DIR = os.path.dirname(os.path.abspath(__file__))
+
+_pyver = f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"
 
 def nb(cells):
     return {
         "nbformat": 4, "nbformat_minor": 4,
         "metadata": {
             "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
-            "language_info": {"name": "python", "version": "3.9.0",
+            "language_info": {"name": "python", "version": _pyver,
                               "codemirror_mode": {"name": "ipython", "version": 3},
                               "file_extension": ".py", "mimetype": "text/x-python"}
         },
