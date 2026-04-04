@@ -99,7 +99,7 @@ If you use this material in your research or teaching, please cite:
 }
 ```
 
-Key software citations:
+Read more about some of these codes at:
 
 - **PySCF**: Q. Sun *et al.*, *WIREs Comput. Mol. Sci.* **2018**, *8*, e1340.
 - **ORCA**: F. Neese *et al.*, *WIREs Comput. Mol. Sci.* **2022**, *12*, e1606.
