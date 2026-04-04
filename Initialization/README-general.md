@@ -17,10 +17,9 @@ Also can be done, using https://interactive.hpc.caltech.edu , in this case, a te
 # Basic slurm job scheduler script
 == Running a calculation without interrupting others. A minimal job submission scirpt is provided in this directory, "script.sh" that submits a DFT calculation (geometric optimization and frequency calculation) using ORCA Quantum Chemistry code input file "test.inp", which calls "water.xyz" - coordinates of a single molecule of water. 
 
-\
 The script is submitted using 
-\
 
 $ sbatch script.sh
-\
+
 More useful commands to monitor, cancel, inspect a slurm job are provided on - https://www.hpc.caltech.edu/documentation/slurm-commands
+
