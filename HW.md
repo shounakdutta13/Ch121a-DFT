@@ -11,7 +11,7 @@
 
 ### Background
 
-Cobalt phthalocyanine (Co-PC) is a planar macrocyclic complex with a Co²⁺ center coordinated by four isoindole nitrogen atoms. It is an important catalyst for oxygen reduction and CO₂ reduction reactions. Co-PC has an open-shell ground state (Co d⁷, S = ½) making it an excellent test case for spin-polarized DFT.
+Cobalt phthalocyanine (Co-PC) is a planar macrocyclic complex with a Co²⁺ center coordinated by four isoindole nitrogen atoms. It is an important catalyst for oxygen reduction and CO₂ reduction.
 
 ### Tasks
 
@@ -41,7 +41,7 @@ Cobalt phthalocyanine (Co-PC) is a planar macrocyclic complex with a Co²⁺ cen
 
 ### Background
 
-Co-PC can catalyze CO₂ reduction to CO. Once CO is produced, it must desorb from the Co center for the catalyst to turn over. The Co-PC-CO intermediate (CO bound axially to Co) can be a resting state that limits turnover frequency. Computing the desorption energy  
+Co-PC can catalyze CO₂ reduction to CO. Once CO is produced, it must desorb from the Co center for the catalyst to turn over. The Co-PC-CO intermediate (CO bound axially to Co) can be a resting state.  
 ΔE_des = E(Co-PC) + E(CO) − E(Co-PC-CO)  
 gives insight into catalyst poisoning and turnover.
 
@@ -79,7 +79,7 @@ gives insight into catalyst poisoning and turnover.
 
 Molecular mechanics force fields represent covalent bonds as harmonic springs:  
 V(r) = ½ k (r − r₀)²  
-where k is the force constant (units: kcal mol⁻¹ Å⁻²) and r₀ is the equilibrium bond length. DFT calculations provide a first-principles reference for these parameters by scanning the bond length and fitting the resulting energy profile.
+where k is the force constant (units: kcal mol⁻¹ Å⁻²) and r₀ is the equilibrium bond length. DFT calculations provide a first-principles reference for these parameters by scanning the bond potential energy surface.
 
 ### Tasks
 
@@ -115,7 +115,7 @@ where k is the force constant (units: kcal mol⁻¹ Å⁻²) and r₀ is the equ
 
 ### Background
 
-Torsion (dihedral) potentials govern the conformational flexibility of hydrocarbon chains and are a key component of biomolecular force fields. The n-butane C–C–C–C dihedral has three minima (anti at 180°, two gauche at ±60°) and two distinct barriers (gauche–gauche at ±120°, eclipsed at 0°). Matching DFT to force-field predictions validates the force-field parameters.
+Torsion (dihedral) potentials govern the conformational flexibility of hydrocarbon chains and are a key component of biomolecular force fields. The n-butane C–C–C–C dihedral has three minima (anti and two gauche) separated by eclipsed barriers.
 
 ### Tasks
 
@@ -184,3 +184,13 @@ def V_opls(phi_deg):
             F3 * (1 + np.cos(3 * phi)) / 2)
 
 ---
+
+## Looking Ahead: From Single Molecules to Complex Systems
+
+The homework problems so far have focused on isolated molecules and small finite fragments — a natural starting point for applying quantum chemistry and DFT. In coming weeks, we will scale up dramatically: instead of tens or hundreds of atoms treated quantum mechanically, we will simulate systems with **thousands to millions of atoms**, such as solvated biomolecules, polymers, liquid-phase reactions, and materials interfaces.
+
+This leap in scale is made possible by **interatomic potentials**, also known as **force fields**. Rather than solving the electronic Schrödinger equation at every step, force fields represent the potential energy surface of a system using simple, computationally cheap analytical functions — harmonic bonds and angles, torsion potentials, van der Waals interactions, and electrostatics. You have already encountered this idea directly: in HW 3 you derived an O–H harmonic force constant from a DFT bond scan, and in HW 4 you compared DFT torsion profiles to the CHARMM and OPLS force fields. Those exercises were not merely academic — they mirror the actual workflow used to *develop* and *validate* force fields.
+
+The parameters that populate these force fields (bond force constants, equilibrium geometries, partial charges, torsion barriers, and more) are overwhelmingly derived from **high-quality ab initio and DFT reference data**. Widely used force fields such as CHARMM, OPLS-AA, AMBER, and GAFF are systematically parameterized against quantum chemical calculations of exactly the kind you have been performing. Machine-learned interatomic potentials (MLIPs) — an increasingly important class of next-generation force fields — take this further, training neural networks or Gaussian process models directly on large DFT datasets to achieve near-quantum accuracy at a fraction of the cost.
+
+Understanding where force-field parameters come from — and their limitations — is essential for any researcher who uses molecular simulation. The ab initio and DFT skills developed in this course are therefore not just ends in themselves: they form the **quantitative foundation** upon which large-scale atomistic simulation is built.
