@@ -191,6 +191,9 @@ The homework problems so far have focused on isolated molecules and small finite
 
 This leap in scale is made possible by **interatomic potentials**, also known as **force fields**. Rather than solving the electronic Schrödinger equation at every step, force fields represent the potential energy surface of a system using simple, computationally cheap analytical functions — harmonic bonds and angles, torsion potentials, van der Waals interactions, and electrostatics. You have already encountered this idea directly: in HW 3 you derived an O–H harmonic force constant from a DFT bond scan, and in HW 4 you compared DFT torsion profiles to the CHARMM and OPLS force fields. Those exercises were not merely academic — they mirror the actual workflow used to *develop* and *validate* force fields.
 
+
+
+
 The parameters that populate these force fields (bond force constants, equilibrium geometries, partial charges, torsion barriers, and more) are overwhelmingly derived from **high-quality ab initio and DFT reference data**. Widely used force fields such as CHARMM, OPLS-AA, AMBER, and GAFF are systematically parameterized against quantum chemical calculations of exactly the kind you have been performing. Machine-learned interatomic potentials (MLIPs) take this further, training neural networks or Gaussian process models directly on large DFT datasets to achieve near-quantum accuracy at a fraction of the cost.
 
 Understanding where force-field parameters come from, and their limitations, is essential for any researcher who uses molecular simulation. The ab initio and DFT skills developed in this course are therefore not just ends in themselves: they form the **quantitative foundation** upon which large-scale atomistic simulation is built.
