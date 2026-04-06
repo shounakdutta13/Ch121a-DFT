@@ -1,7 +1,6 @@
-# Ch121a — Homework Assignments
+# Ch121a — Homework problems
 
-> **Course**: Ch121a — Quantum Chemistry & DFT in Practice  
-> **Instructor**: Prof. William A. Goddard III  
+> **Course**: Ch121a — Quantum Chemistry & DFT in Practice   
 > **Tools**: PySCF, ORCA, Jaguar, ASE, py3Dmol
 
 ---
@@ -28,34 +27,11 @@ Cobalt phthalocyanine (Co-PC) is a planar macrocyclic complex with a Co²⁺ cen
 3. **Spin-State Analysis**  
    - Compute the doublet (S = ½) and quartet (S = 3/2) spin states.  
    - Report the doublet–quartet splitting (kcal/mol) and identify the ground state.  
-   - Visualize the spin density (α − β electron density) using py3Dmol or nglview.
+   - Visualize the spin density (α − β electron density) using py3Dmol or Avogadro2.
 
 4. **Frontier Orbitals**  
    - Plot the HOMO and LUMO of Co-PC.  
    - Identify the dominant metal d-orbital character of each frontier orbital.
-
-### Deliverables
-
-- Optimized geometry (`.xyz` file) and a table of key bond lengths and angles.  
-- Total energies for the three basis sets (convergence plot).  
-- Spin-state splitting table.  
-- HOMO/LUMO orbital visualizations with orbital energies.
-
-### Suggested Input (PySCF)
-
-```python
-from pyscf import gto, dft
-
-mol = gto.M(
-    atom=open("data/molecules/CoPC.xyz").read(),
-    basis="def2-SVP",
-    charge=0,
-    spin=1,          # 2S = 1 → doublet
-)
-mf = dft.UKS(mol)
-mf.xc = "b3lyp"
-mf.kernel()
-```
 
 ---
 
@@ -92,13 +68,6 @@ gives insight into catalyst poisoning and turnover.
 5. *(Optional)* **Potential Energy Surface Along Co–CO Distance**  
    - Scan the Co–C distance from 1.8 Å to 4.0 Å (step 0.1 Å) with all other coordinates relaxed.  
    - Plot E vs. Co–C distance to visualize the binding well and dissociation limit.
-
-### Deliverables
-
-- Optimized geometries for Co-PC, CO, and Co-PC-CO.  
-- Table of ΔE, ΔH, ΔG (kcal/mol) for CO desorption at B3LYP/def2-SVP and def2-TZVP.  
-- Discussion of spin-state change and its effect on the binding energy.  
-- *(Optional)* PES scan plot.
 
 ---
 
@@ -138,32 +107,6 @@ where k is the force constant (units: kcal mol⁻¹ Å⁻²) and r₀ is the equ
    - Fit the full scan to a Morse potential: V(r) = D_e [1 − e^(−α(r−r₀))]².  
    - Extract D_e (dissociation energy) and α, and compare D_e to the O–H bond dissociation energy (~119 kcal/mol).
 
-### Deliverables
-
-- Table of O–H scan energies (r in Å, ΔE in kcal/mol).  
-- Plot of ΔE vs. r with both the DFT data points and the fitted harmonic (and Morse, optional) curves.  
-- Extracted force constant k (kcal mol⁻¹ Å⁻² and N/m).  
-- Comparison table of DFT frequency, scan-derived frequency, and experimental frequency.
-
-### Suggested Input Snippet
-
-```python
-import numpy as np
-from pyscf import gto, dft
-
-r0 = 0.9584          # initial O-H guess (Angstrom)
-r_scan = np.arange(0.70, 1.45, 0.05)
-energies = []
-
-for r in r_scan:
-    mol = gto.M(
-        atom=f"O 0 0 0; H 0 0 {r}; H 0 0.757 -0.469",
-        basis="def2-TZVP", charge=0, spin=0,
-    )
-    mf = dft.RKS(mol, xc="b3lyp").run()
-    energies.append(mf.e_tot)
-```
-
 ---
 
 ## HW 4 — n-Butane C–C–C–C Dihedral Scan and Force-Field Comparison
@@ -182,8 +125,8 @@ Torsion (dihedral) potentials govern the conformational flexibility of hydrocarb
    - At each step, constrain the dihedral and relax all other coordinates.  
    - Plot ΔE (kcal/mol) vs. dihedral angle φ.
 
-2. **Key Conformational Energies**  
-   - Extract and report:
+2. **Conformational Energies**  
+   
      | Conformer | φ (°) | ΔE (kcal/mol) |
      |-----------|--------|---------------|
      | Anti      | 180    | 0.00 (reference) |
@@ -221,30 +164,7 @@ Torsion (dihedral) potentials govern the conformational flexibility of hydrocarb
      V(φ) = Σₙ [aₙ cos(nφ) + bₙ sin(nφ)], n = 1…6  
    - Derive force-field-ready dihedral parameters directly from DFT.
 
-### Deliverables
 
-- DFT scan data table (φ in degrees, ΔE in kcal/mol).  
-- Overlay plot of DFT, CHARMM, and OPLS dihedral profiles.  
-- Comparison table of barrier heights (kcal/mol).  
-- RMSD (kcal/mol) of CHARMM and OPLS vs. DFT.  
-- *(Optional)* Fourier-fit coefficients and comparison.
-
-### Suggested Input Snippet
-
-```python
-import numpy as np
-from pyscf import gto, dft
-from pyscf.geomopt.geometric_solver import optimize
-
-# After optimizing n-butane, constrain the dihedral and scan
-dihedrals = np.arange(0, 370, 10)
-energies = []
-
-for phi in dihedrals:
-    # Set dihedral constraint in your geometry optimizer
-    # (use ASE or geomeTRIC with dihedral constraints)
-    # Then run a constrained optimization and record energy
-    pass
 
 # CHARMM torsion profile (illustrative)
 def V_charmm(phi_deg):
@@ -260,24 +180,5 @@ def V_opls(phi_deg):
     return (F1 * (1 + np.cos(phi)) / 2 +
             F2 * (1 - np.cos(2 * phi)) / 2 +
             F3 * (1 + np.cos(3 * phi)) / 2)
-```
 
 ---
-
-## General Notes
-
-- All DFT calculations use the **B3LYP** functional unless otherwise stated.  
-- Energies are reported relative to the lowest-energy structure in each scan (ΔE in kcal/mol).  
-- Include convergence checks (SCF and geometry) in your submitted notebooks.  
-- Submit as a Jupyter notebook (`.ipynb`) with all cells executed and output visible.  
-- Use PySCF for all calculations unless ORCA or Jaguar is specifically requested.
-
-## Grading Rubric (per HW)
-
-| Item | Points |
-|------|--------|
-| Correct calculation setup and convergence | 30 |
-| Accurate numerical results and units | 30 |
-| Quality of plots and tables | 20 |
-| Discussion and physical interpretation | 20 |
-| **Total** | **100** |
