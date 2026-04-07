@@ -2,29 +2,29 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
 
-# Ch121a — Atomic-Level Simulations of Materials and Molecules
+# Ch121a — Quantum Chemistry & DFT for small molecules (finite systems): From Fundamentals to Research
 
 _Some lectures and tutorials: Prabhat Prakash_
 
 _Course Instructor: Prof. William A. Goddard III_
 
-An interactive Jupyter Book for **Ch121a** https://cce.caltech.edu/academics/courses/ch-121-ab at Caltech. Covers quantum chemistry, density functional theory, molecular dynamics and some new flavors of compuational chemistry from first principles through practical research workflows, using PySCF (open-source), ORCA, LAMMPS, Gromacs, VASP, Quantum Espresso.
+An interactive Jupyter Book for **Ch121a** https://cce.caltech.edu/academics/courses/ch-121-ab at Caltech. Covers quantum chemistry and density functional theory from first principles through practical research workflows, using PySCF (open-source), ORCA, and Jaguar.
 
-**Important instructions relevant to this class, hpc login, vi editor, linux commands, initial scripts are kept in 'Initialization' directory** 
+**Important instructions relevant to this class, hpc login, vi editor, linux commands, initial scripts are kept in /Initialization directory** 
 
 Only very basic examples are covered so that general calculations can run easily even on a laptop.
 
 ---
 
-## Module Overview
+## Chapter Overview
 
 | # | Title |
 |---|-------|
-| 01 | Quantum Chemistry (theory) and DFT for finite structures |
-| 02 | Molecular Dynamics |
-| 03 | DFT in condensed phase, solid-state electronic structure |
-| 04 | Materials properties with periodic DFT |
-| 05 | Ab-initio molecular dynamics, machine-learning interatomic potentials |
+| 00 | Setup & Tools |
+| 01 | Basics of HF, DFT and Basis Sets |
+| 02 | Geometry, Molecular Properties, Reactions and Energies |
+| 03 | ORCA and Jaguar: Capabilities & Practical Guide |
+| 04 | Test Cases |
 
 ---
 
@@ -104,7 +104,7 @@ If you use this material in your research or teaching, please cite:
   url          = {https://github.com/ppt-2/Ch121a-DFT}
 }
 ```
-
+Read more in [Introduction](intro.md)
 Read more about some of these codes at:
 
 - **PySCF**: Q. Sun *et al.*, *WIREs Comput. Mol. Sci.* **2018**, *8*, e1340.
