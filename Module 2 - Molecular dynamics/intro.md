@@ -11,5 +11,6 @@ This module covers classical molecular dynamics simulations: theory, force field
 | 03 | Force Fields & PBC | UFF, OPLS, AMBER, CHARMM, PBC, minimum image |
 | 04 | Analysis of Simulations | g(r), VACF, MSD, diffusion, thermodynamics |
 | 05 | Non-Equilibrium MD & Metadynamics | SMD, Jarzynski, metadynamics, FES |
+| 06-pre | Building a Water Box: PACKMOL & OVITO | PACKMOL packing, OVITO visualization & RDF |
 | 06 | Tutorial 1: Water in LAMMPS | SPC/E, LAMMPS scripts, RDF, diffusion |
 | 07 | Tutorial 2: Protein Unfolding in GROMACS | Chignolin, umbrella sampling, WHAM, PMF |
