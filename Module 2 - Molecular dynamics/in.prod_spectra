@@ -1,0 +1,57 @@
+
+# ============================================================
+# LAMMPS Input: SPC/E Flex_Water 
+# ============================================================
+units           real
+atom_style      full
+boundary        p p p
+
+read_restart    restart.npt300K.50000 
+#read_data       water.data
+
+# --- Force field ---
+pair_style      lj/cut/coul/long 10.0 10.0
+pair_coeff      1 1  0.15535 3.166   # O-O: eps(kcal/mol), sigma(Ang)
+pair_coeff      1 2  0.0     0.0     # O-H: no LJ
+pair_coeff      2 2  0.0     0.0     # H-H: no LJ
+
+bond_style      harmonic
+bond_coeff      1  553.935 1.0        # stiff spring, r0=1.0 Ang
+
+angle_style     harmonic
+angle_coeff     1  45.767 109.47     # stiff spring, theta0=109.47 deg
+
+kspace_style    pppm 1.0e-4
+
+# --- Constraints (rigid SPC/E bonds and angles) ---
+#fix             shake_water all shake 1.0e-4 20 0 b 1 a 1
+
+# --- Neighbor list ---
+neighbor        2.0 bin
+neigh_modify    every 1 delay 0 check yes
+
+reset_timestep 0
+# --- Nosé-Hoover NVT: T=300 K 20 + 20 ps ---
+fix             1 all nvt temp 300.0 300.0 100.0
+
+timestep        1.0
+log             nvt.eng
+thermo          100
+thermo_style    custom step temp press etotal ke pe evdwl ecoul vol
+thermo_modify line multi
+
+# Trajectory for nvt eql (20 ps)
+dump            1 all custom 1000 nvt_traj.lammpstrj id element x y z vx vy vz
+dump_modify     1 sort id element O H
+restart         20000 restart.nvt300K.*
+run             20000      # 200 ps
+# Fine 20 ps
+undump 1
+dump            1 all custom 2 nvt_fine.lammpstrj id element x y z vx vy vz
+dump_modify     1 sort id element O H
+restart         10000 restart.nvt_vibra.*
+run             20000      # 200 ps
+
+
+write_data      water_nvt_end.data
+
