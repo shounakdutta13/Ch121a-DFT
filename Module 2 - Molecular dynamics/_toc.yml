@@ -11,6 +11,8 @@ chapters:
   title: "04 — Analysis of MD Simulations"
 - file: notebooks/05_nonequilibrium_md_metadynamics
   title: "05 — Non-Equilibrium MD & Metadynamics"
+- file: notebooks/06_pre_packmol_ovito
+  title: "06-pre — Building a Water Box with PACKMOL & OVITO"
 - file: notebooks/06_tutorial_water_lammps
   title: "06 — Tutorial 1: Water MD in LAMMPS"
 - file: notebooks/07_tutorial_protein_unfolding_gromacs
