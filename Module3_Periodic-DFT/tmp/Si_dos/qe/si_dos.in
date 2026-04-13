@@ -1,0 +1,9 @@
+&projwfc
+  prefix   = 'Si'
+  outdir   = './out'
+  Emin     = -10.0
+  Emax     =  10.0
+  DeltaE   =  0.01
+  ngauss   = 0
+  degauss  = 0.02
+/

@@ -1,0 +1,16 @@
+# INCAR — TiO2 rutile plain PBE (reference, underestimates gap)
+SYSTEM  = TiO2 rutile PBE
+ISTART  = 0
+ICHARG  = 2
+ENCUT   = 500
+PREC    = Accurate
+EDIFF   = 1E-6
+NSW     = 0
+IBRION  = -1
+ISMEAR  = 0
+SIGMA   = 0.05
+ALGO    = Normal
+NEDOS   = 2000
+LORBIT  = 11
+LWAVE   = .TRUE.
+LCHARG  = .TRUE.

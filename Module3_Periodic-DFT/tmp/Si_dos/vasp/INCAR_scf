@@ -1,0 +1,14 @@
+# INCAR — Step 1: Self-consistent field (SCF) for Si
+SYSTEM  = Si bulk PBE
+ISTART  = 0          # start from scratch
+ICHARG  = 2          # superposition of atomic charges
+ENCUT   = 400        # plane-wave cutoff (eV)
+PREC    = Accurate
+EDIFF   = 1E-6       # energy convergence (eV)
+NSW     = 0          # no ionic relaxation
+IBRION  = -1
+ISMEAR  = 0          # Gaussian smearing
+SIGMA   = 0.05       # smearing width (eV)
+ALGO    = Normal
+LWAVE   = .TRUE.     # write WAVECAR for DOS step
+LCHARG  = .TRUE.     # write CHGCAR

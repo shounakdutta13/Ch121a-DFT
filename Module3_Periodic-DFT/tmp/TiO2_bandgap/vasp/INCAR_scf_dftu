@@ -1,0 +1,24 @@
+# INCAR — TiO2 rutile GGA+U (PBE+U)
+SYSTEM  = TiO2 rutile PBE+U
+ISTART  = 0
+ICHARG  = 2
+ENCUT   = 500        # higher cutoff for O
+PREC    = Accurate
+EDIFF   = 1E-6
+NSW     = 0
+IBRION  = -1
+ISMEAR  = 0
+SIGMA   = 0.05
+ALGO    = Normal
+# DFT+U parameters (Dudarev formulation, LDAUTYPE=2)
+LDAU    = .TRUE.
+LDAUTYPE = 2         # Dudarev: only U_eff = U - J matters
+LDAUL   = 2 -1       # l=2 (d) for Ti; -1 (none) for O
+LDAUU   = 4.0  0.0   # U for Ti d = 4.0 eV
+LDAUJ   = 0.0  0.0   # J = 0 (absorbed into U_eff)
+LMAXMIX = 4          # needed for d electrons
+LDAUPRINT = 2
+NEDOS   = 2000
+LORBIT  = 11
+LWAVE   = .TRUE.
+LCHARG  = .TRUE.
