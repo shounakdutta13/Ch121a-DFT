@@ -1,0 +1,30 @@
+&control
+  calculation  = 'scf'
+  prefix       = 'Si'
+  outdir       = './out'
+  pseudo_dir   = './pseudo'
+  verbosity    = 'high'
+/
+&system
+  ibrav        = 2          ! FCC lattice
+  celldm(1)    = 10.263     ! lattice parameter in Bohr (5.431 Angstrom)
+  nat          = 2
+  ntyp         = 1
+  ecutwfc      = 40.0       ! plane-wave cutoff (Ry)
+  ecutrho      = 320.0      ! charge density cutoff (Ry)
+  occupations  = 'smearing'
+  smearing     = 'gaussian'
+  degauss      = 0.01
+/
+&electrons
+  conv_thr     = 1.0d-8
+/
+ATOMIC_SPECIES
+  Si  28.085  Si.pbe-n-kjpaw_psl.1.0.0.UPF
+
+ATOMIC_POSITIONS {alat}
+  Si  0.00  0.00  0.00
+  Si  0.25  0.25  0.25
+
+K_POINTS {automatic}
+  8 8 8  0 0 0
