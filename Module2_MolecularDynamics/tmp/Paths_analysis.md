@@ -8,10 +8,3 @@
 /resnick/groups/wag/wag_programs/travis-src-220729
 
 ```
-
-
-If access trouble
-
-```
-awk "{print $1, $3}" results_filename > out.txt
-```
