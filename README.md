@@ -3,10 +3,7 @@
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
 
 # Ch121a — Atomic-Level Simulations of Materials and Molecules
-
-_Some lectures and tutorials: Prabhat Prakash_
-
-_Course Instructor: Prof. William A. Goddard III_
+_Course Instructor: Dr. Prabhat Prakash, Prof. William A. Goddard III_
 
 An interactive Jupyter Book for **Ch121a** https://cce.caltech.edu/academics/courses/ch-121-ab at Caltech. Covers quantum chemistry, density functional theory, molecular dynamics and some new flavors of compuational chemistry from first principles through practical research workflows, using PySCF (open-source), ORCA, LAMMPS, Gromacs, VASP, Quantum Espresso.
 
